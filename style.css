@@ -1,0 +1,18 @@
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 2rem;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* @media (max-width: 500px) {
+  .stats {
+    flex-direction: column;
+  }
+} */

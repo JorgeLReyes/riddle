@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Riddle el patron</title>
+    <script src="./app.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="flex">
+    <section class="stats">
+      <div><span>Total: </span><span id="total-games">0</span></div>
+      <div><span>win: </span><span id="total-wins">0</span></div>
+      <div><span>losses: </span><span id="total-losses">0</span></div>
+      <div><span>ties: </span><span id="total-ties">0</span></div>
+      <div><span>racha: </span><span id="current-streak">0</span></div>
+      <div><span>Win rate: </span><span id="win-rate">0</span>%</div>
+      <div><span>Puntos: </span><span id="points">0</span></div>
+    </section>
+
+    <section class="stats">
+      <label for="points-current">Pon tus puntos iniciales</label>
+      <input
+        id="points-current"
+        value="0"
+        placeholder="Pon tus puntos iniciales"
+      />
+      <button id="win">Partida ganada +1</button>
+      <button id="loss">Partida perdida +1</button>
+      <button id="tie">Partida empatada +1</button>
+    </section>
+  </body>
+</html>
