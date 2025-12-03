@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="flex">
+    <div>TikTok: JvRiddle</div>
     <section class="stats">
       <div><span>Total: </span><span id="total-games">0</span></div>
       <div><span>win: </span><span id="total-wins">0</span></div>
@@ -19,15 +20,17 @@
     </section>
 
     <section class="stats">
-      <label for="points-current">Pon tus puntos iniciales</label>
+      <label for="points-current">Puntos iniciales</label>
       <input
         id="points-current"
         value="0"
         placeholder="Pon tus puntos iniciales"
       />
-      <button id="win">Partida ganada +1</button>
-      <button id="loss">Partida perdida +1</button>
-      <button id="tie">Partida empatada +1</button>
+      <label for="racha-actual">Racha actual</label>
+      <input id="racha-actual" value="0" placeholder="Racha actual" />
+      <button id="win">ganada +1</button>
+      <button id="loss">perdida +1</button>
+      <button id="tie">empatada +1</button>
     </section>
   </body>
 </html>

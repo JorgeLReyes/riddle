@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: start;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .flex {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 /* @media (max-width: 500px) {
@@ -16,3 +16,11 @@
     flex-direction: column;
   }
 } */
+
+body {
+  background-color: white;
+}
+
+input {
+  width: 4rem;
+}

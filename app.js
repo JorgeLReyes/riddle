@@ -6,6 +6,7 @@ const currentStreak = document.getElementById("current-streak");
 const winRate = document.getElementById("win-rate");
 const currentPointsInput = document.getElementById("points-current");
 const points = document.getElementById("points");
+const rachaActualInput = document.getElementById("racha-actual");
 let streakPoints = 0;
 let pointsValue = 0;
 let pointsBase = 10;
@@ -93,5 +94,15 @@ addEventListener("change", (e) => {
     console.log("first");
     pointsValue = parseInt(currentPointsInput.value);
     points.textContent = pointsValue;
+  }
+
+  if (e.target.id === "racha-actual") {
+    const racha = parseInt(rachaActualInput.value) || 0;
+    currentStreak.textContent = racha;
+
+    streakPoints = 0;
+    if (racha > 1) {
+      streakPoints = Math.min((racha - 1) * 3, 12);
+    }
   }
 });
