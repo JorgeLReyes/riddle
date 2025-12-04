@@ -11,16 +11,10 @@
   gap: 1rem;
 }
 
-/* @media (max-width: 500px) {
-  .stats {
-    flex-direction: column;
-  }
-} */
-
 body {
   background-color: white;
 }
 
 input {
-  width: 4rem;
+  width: 2.5rem;
 }

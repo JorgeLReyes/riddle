@@ -11,8 +11,6 @@ let streakPoints = 0;
 let pointsValue = 0;
 let pointsBase = 10;
 
-const updatePoints = () => {};
-
 const updateTotalGames = () => {
   const value = parseInt(totalGames.textContent);
   totalGames.textContent = value + 1;
@@ -33,6 +31,7 @@ const updateTotalWins = () => {
   totalWins.textContent = value + 1;
   pointsValue += pointsBase + streakPoints;
   points.textContent = pointsValue;
+  localStorage.setItem("points", pointsValue);
 };
 
 const updateTotalLoss = () => {
@@ -46,27 +45,41 @@ const updateTotalTies = () => {
   const value = parseInt(totalTies.textContent);
   totalTies.textContent = value + 1;
   points.textContent = pointsValue;
+  localStorage.setItem("points", pointsValue);
 };
 
 const updateCurrentStreak = (result) => {
   const streak = parseInt(currentStreak.textContent);
+
   if (result === "win") {
     if (streak + 1 > 1)
       streakPoints = streakPoints < 12 ? streakPoints + 3 : 12;
     currentStreak.textContent = streak + 1;
+    rachaActualInput.value = streak + 1;
   }
   if (result === "loss") {
     streakPoints = 0;
     currentStreak.textContent = 0;
+    rachaActualInput.value = 0;
   }
   if (result === "tie") {
     streakPoints = 0;
     currentStreak.textContent = 0;
+    rachaActualInput.value = 0;
   }
 };
 
 window.addEventListener("load", () => {
+  const saved = localStorage.getItem("points");
+
+  if (saved !== null) {
+    pointsValue = Number(saved);
+  } else {
+    localStorage.setItem("points", pointsValue);
+  }
+
   points.textContent = pointsValue;
+  currentPointsInput.value = pointsValue;
 });
 
 addEventListener("click", (event) => {
@@ -76,12 +89,14 @@ addEventListener("click", (event) => {
     updateTotalWins();
     updateWinRate();
   }
+
   if (event.target.id === "loss") {
     updateCurrentStreak("loss");
     updateTotalGames();
     updateTotalLoss();
     updateWinRate();
   }
+
   if (event.target.id === "tie") {
     updateCurrentStreak("tie");
     updateTotalGames();
@@ -91,8 +106,8 @@ addEventListener("click", (event) => {
 
 addEventListener("change", (e) => {
   if (e.target.id === "points-current") {
-    console.log("first");
     pointsValue = parseInt(currentPointsInput.value);
+    localStorage.setItem("points", pointsValue);
     points.textContent = pointsValue;
   }
 
@@ -101,8 +116,6 @@ addEventListener("change", (e) => {
     currentStreak.textContent = racha;
 
     streakPoints = 0;
-    if (racha > 1) {
-      streakPoints = Math.min((racha - 1) * 3, 12);
-    }
+    if (racha > 1) streakPoints = Math.min((racha - 1) * 3, 12);
   }
 });
