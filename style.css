@@ -4,8 +4,9 @@
   --negative: #ff0000;
 }
 
+html,
 body {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .stats {
