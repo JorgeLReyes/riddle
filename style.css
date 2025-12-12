@@ -1,3 +1,9 @@
+:root {
+  --positive: #00c117;
+  --zero: #414141;
+  --negative: #ff0000;
+}
+
 .stats {
   display: flex;
   align-items: center;
@@ -12,9 +18,31 @@
 }
 
 body {
-  background-color: white;
+  /* background-color: white; */
 }
 
 input {
   width: 2.5rem;
+}
+
+.marcador {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  background-color: #0077e6;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+}
+
+.value {
+  padding: 0.6rem;
+  background-color: #00000070;
+  color: #fff;
+  border-radius: 0.5rem;
 }

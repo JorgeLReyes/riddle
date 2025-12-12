@@ -7,6 +7,8 @@ const winRate = document.getElementById("win-rate");
 const currentPointsInput = document.getElementById("points-current");
 const points = document.getElementById("points");
 const rachaActualInput = document.getElementById("racha-actual");
+const gapText = document.getElementById("gapText");
+let gap = 0;
 let streakPoints = 0;
 let pointsValue = 0;
 let pointsBase = 10;
@@ -22,8 +24,14 @@ const updateWinRate = () => {
 
   const valueRate =
     (valueTotalWins / (valueTotalWins + valueTotalLosses)) * 100;
-  winRate.textContent = valueRate.toFixed(2);
+  winRate.textContent = `${valueRate.toFixed(2)}%`;
   currentPointsInput.value = pointsValue;
+  gapText.textContent = gap > 0 ? `+${gap}` : gap;
+
+  gapText.style.setProperty(
+    "color",
+    gap === 0 ? "var(--zero)" : gap > 0 ? "var(--positive)" : "var(--negative)"
+  );
 };
 
 const updateTotalWins = () => {
@@ -32,6 +40,7 @@ const updateTotalWins = () => {
   pointsValue += pointsBase + streakPoints;
   points.textContent = pointsValue;
   localStorage.setItem("points", pointsValue);
+  gap += pointsBase + streakPoints;
 };
 
 const updateTotalLoss = () => {
@@ -39,6 +48,7 @@ const updateTotalLoss = () => {
   totalLosses.textContent = value + 1;
   pointsValue -= pointsBase;
   points.textContent = pointsValue;
+  gap -= 10;
 };
 
 const updateTotalTies = () => {
@@ -54,17 +64,17 @@ const updateCurrentStreak = (result) => {
   if (result === "win") {
     if (streak + 1 > 1)
       streakPoints = streakPoints < 12 ? streakPoints + 3 : 12;
-    currentStreak.textContent = streak + 1;
+    currentStreak.textContent = `${streak + 1}`;
     rachaActualInput.value = streak + 1;
   }
   if (result === "loss") {
     streakPoints = 0;
-    currentStreak.textContent = 0;
+    currentStreak.textContent = `${0}`;
     rachaActualInput.value = 0;
   }
   if (result === "tie") {
     streakPoints = 0;
-    currentStreak.textContent = 0;
+    currentStreak.textContent = `${0}`;
     rachaActualInput.value = 0;
   }
 };
