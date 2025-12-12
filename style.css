@@ -4,6 +4,10 @@
   --negative: #ff0000;
 }
 
+body {
+  background-color: transparent;
+}
+
 .stats {
   display: flex;
   align-items: center;
