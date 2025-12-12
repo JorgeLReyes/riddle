@@ -4,8 +4,8 @@
   --negative: #ff0000;
 }
 
-html,
-body {
+body,
+html {
   background-color: transparent !important;
 }
 
